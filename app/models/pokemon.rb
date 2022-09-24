@@ -31,7 +31,7 @@ class Pokemon < ApplicationRecord
     validates :generation, presence: true, numericality: { greater_than: 0 }
 
     before_validation do
-        self.type_1 = self.type_1.downcase.capitalize
+        self.type_1 = self.type_1.downcase.capitalize if self.type_1.present?
         self.type_2 = self.type_2.downcase.capitalize if self.type_2.present?
         self.type_2 = nil if self.type_2 == self.type_1
     end
